@@ -1,7 +1,4 @@
-import Db 
--- 0035411     Lucas Mateus Fernandes
--- 0020640     Pedro Daniel Camargos Soares
-
+db = [(2375,02,06,44,46,53,58),(2374,12,13,25,37,39,41)]
 
 numInGame n (j,n1,n2,n3,n4,n5,n6) 
     | n == n1 = True 
@@ -63,45 +60,94 @@ maxV (h:t) maxP -- salva a tupla ordenada referente ao numero que mais aparece
     | t == [] && qtd(maxP) >= qtd(h) = maxP
     | t == [] && qtd(h) > qtd(maxP) = h
     | qtd(h) > qtd(maxP) = maxV t h
-    | qtd(maxP) >= qtd(h) = maxV t maxP
+    | qtd(maxP) > qtd(h) = maxV t maxP
     | otherwise = (maxP)
 
 maisSorteado = maisSorteadoAUX db
 
 
 
-main = do
-     
+menu = do
 	putStrLn("Escolha uma opcao:")
 	putStrLn("1- O numero X ja foi sorteado alguma vez?")
 	putStrLn("2- O jogo (X1,X2,X3,X4,X5,X6) ja foi contemplado alguma vez?")
 	putStrLn("3- Um numero X foi sorteado quantas vezes?")
 	putStrLn("4- Qual o numero foi mais sorteado?")
-	putStrLn("0- Sair")
-
-
 	opcao <- getLine
 	case opcao of
 		"1" -> opc1
 		"2" -> opc2
 		"3" -> opc3
-		"4" -> opc4
-		"0" -> putStrLn("Falouuuu")
-        
+		"4" -> print(maisSorteado)
 
-   
+numb x
+    | x=="1" = 1
+    | x=="2" = 2
+    | x=="3" = 3
+    | x=="4" = 4
+    | x=="5" = 5
+    | x=="6" = 6
+    | x=="7" = 7
+    | x=="8" = 8
+    | x=="9" = 9
+    | x=="10" = 10
+    | x=="11" = 11
+    | x=="12" = 12
+    | x=="13" = 13
+    | x=="14" = 14
+    | x=="15" = 15
+    | x=="16" = 16
+    | x=="17" = 17
+    | x=="18" = 18
+    | x=="19" = 19
+    | x=="20" = 20
+    | x=="21" = 21
+    | x=="22" = 22
+    | x=="23" = 23
+    | x=="24" = 24
+    | x=="25" = 25
+    | x=="26" = 26
+    | x=="27" = 27
+    | x=="28" = 28
+    | x=="29" = 29
+    | x=="30" = 30
+    | x=="31" = 31
+    | x=="32" = 32
+    | x=="33" = 33
+    | x=="34" = 34
+    | x=="35" = 35
+    | x=="36" = 36
+    | x=="37" = 37
+    | x=="38" = 38
+    | x=="39" = 39
+    | x=="40" = 40
+    | x=="41" = 41
+    | x=="42" = 42
+    | x=="43" = 43
+    | x=="44" = 44
+    | x=="45" = 45
+    | x=="46" = 46
+    | x=="47" = 47
+    | x=="48" = 48
+    | x=="49" = 49
+    | x=="50" = 50
+    | x=="51" = 51
+    | x=="52" = 52
+    | x=="53" = 53
+    | x=="54" = 54
+    | x=="55" = 55
+    | x=="56" = 56
+    | x=="57" = 57
+    | x=="58" = 58
+    | x=="59" = 59
+    | x=="60" = 60
+    | otherwise = 0
+    
 
 opc1 = do
     putStrLn "Digite o numero que deseja verificar"
     numero <- readLn
-    if (sorteado numero)
-        then putStrLn ("O numero "++(show numero)++" ja foi sorteado.")
-        else putStrLn ("O numero "++(show numero)++" nunca foi sorteado.")
-    
-    putStrLn ("\nDigite qualquer tecla para continuar")
-    getChar
-    putStrLn "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
-    main
+    print (sorteado numero)
 
 opc2 = do
     putStrLn "Digite os Numeros na ordem crescente"
@@ -123,32 +169,13 @@ opc2 = do
     putStrLn "Digite o sexto numero do jogo"
     numero6 <- readLn
 
-    if (jogoSorteado numero1 numero2 numero3 numero4 numero5 numero6)
-        then putStrLn ("O jogo "++(show numero1)++" "++(show numero2)++" "++(show numero3)++" "++(show numero4)++" "++(show numero5)++" "++(show numero6)++" ja foi sorteado pelo menos uma vez.")
-        else putStrLn ("O jogo "++(show numero1)++" "++(show numero2)++" "++(show numero3)++" "++(show numero4)++" "++(show numero5)++" "++(show numero6)++" nunca foi sorteado.")
-
-    putStrLn ("\nDigite qualquer tecla para continuar")
-    getChar
-    putStrLn "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
-    main
+    print(jogoSorteado numero1 numero2 numero3 numero4 numero5 numero6)
 
 opc3 = do
     putStrLn "Digite o numero a ser pesquisado"
     numero <- readLn
 
-    putStrLn ("O numero "++(show numero)++" foi sorteado "++( show (quantSorteado numero))++" vezes")
-    putStrLn ("\nDigite qualquer tecla para continuar")
-    getChar
-    putStrLn "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
-    main
+    print ("Foi sorteado "++( show (quantSorteado numero))++" vezes")
 
-    
 
-opc4 = do
-    putStrLn("O numero "++(show maisSorteado)++" foi o mais sorteado")
-    putStrLn ("\nDigite qualquer tecla para continuar")
-    getChar
-    putStrLn "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
-    main
-    
 
