@@ -20,7 +20,9 @@ sorteadoX num (j:other)
 
 sorteado num = sorteadoX num db
 
---jogoEq n1 n2 n3 n4 n5 n6 (j, s1, s2, s3, s4, s5, s6) = s1 == n1 && s2 == n2 && s3 == n3 && s4 == n4 && s5 == n5 && s6 == n6
+
+
+
 
 jogoEq n1 n2 n3 n4 n5 n6 jogo =
     numInGame n1 jogo && numInGame n2 jogo && numInGame n3 jogo && numInGame n4 jogo && numInGame n5 jogo && numInGame n6 jogo && n1 /= n2 && n1 /= n3 && n1 /= n4 && n1 /= n5 && n1 /= n6 && n2 /= n3 && n2 /= n4 && n2 /= n5 && n2 /= n6 && n3 /= n4 && n3 /= n5 && n3 /= n6 && n4 /= n5 && n4 /= n6 && n5 /= n6              
@@ -31,9 +33,9 @@ jogoSorteadoX n1 n2 n3 n4 n5 n6 (j:other)
     | jogoSorteadoX n1 n2 n3 n4 n5 n6 other == True = True
     | otherwise = False
 
-
-
 jogoSorteado n1 n2 n3 n4 n5 n6 = jogoSorteadoX n1 n2 n3 n4 n5 n6 db
+
+
 
 
 
@@ -46,6 +48,8 @@ qtdXAux x t (j:other)
     | otherwise = -1
 
 quantSorteado num = qtdX num db
+
+
 
 -- para cada numero 'x', no intervalo[1-60] verifica a sua quantidade,
 -- dado um vetor de quantidade de ocorrencias retorna o numero que mais foi sorteado
